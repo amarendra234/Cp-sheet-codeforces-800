@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+	    int n,x;
+	    cin>>n>>x;
+	    int a[n];
+	    for(int i=0;i<n;i++){
+	        cin>>a[i];
+	    }
+	    int max_capcity=a[0];
+	    int current_fuel=max_capcity;
+	    int pre=0;
+	    for(int i=0;i<n;i++){
+	        int next_station_distance=a[i]-pre;
+	        if(current_fuel>=next_station_distance){
+	            current_fuel-=next_station_distance;
+	            current_fuel=min(current_fuel+a[i],max_capcity);
+	        }else{
+	            int dist=next_station_distance-current_fuel;
+	            max_capcity+=dist;
+	            current_fuel=min(max_capcity,a[i]);
+	            
+	        }
+	        pre=a[i];
+	        
+	    }
+	    int next_station_distance=x-pre;
+	    if(current_fuel>=next_station_distance){
+	        current_fuel-=next_station_distance;
+	    }else{
+	        int dist=next_station_distance-current_fuel;
+	        max_capcity+=dist;
+             current_fuel=0;
+	    }
+	    if(current_fuel<next_station_distance){
+	         int dist=next_station_distance-current_fuel;
+	         max_capcity+=dist;
+	    }
+	    cout<<max_capcity<<endl;
+	}
+	return 0;
+}
