@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+	   int n;
+	   cin>>n;
+	   int a[n];
+	   unordered_map<int,int>umap;
+	   for(int i=0;i<n;i++){
+	       cin>>a[i];
+	       umap[a[i]]++;
+	   }
+	   if(umap.size()>2){
+	       cout<<"NO"<<endl;
+	   }else{
+	       int ans=0;
+	       for(auto nbr:umap){
+	           if(ans==0){
+	               ans=nbr.second;
+	           }else{
+	               ans=abs(ans-nbr.second);
+	           }
+	       }
+	       if(n%2){
+	           if(ans==1 or umap.size()==1){
+	               cout<<"YES"<<endl;
+	           }else{
+	               cout<<"NO"<<endl;
+	           }
+	       }else{
+	           if(ans==0 or umap.size()==1){
+	               cout<<"YES"<<endl;
+	           }else{
+	               cout<<"NO"<<endl;
+	           }
+	       }
+	   }
+	   
+	}
+	return 0;
+}
