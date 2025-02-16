@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool findSubstring(string x,string s){
+    if(x.length()>=s.length()){
+         int index=0;
+         for(int i=0;i<x.length();i++){
+             int j=i;
+             while(j<x.length() and index<s.length() and x[j]==s[index]){
+                j++;
+                index++;
+             }
+             if(index==s.length()){
+                 return true;
+             }
+             if(index!=0){
+                 index=0;
+             }
+         }
+    }
+    return false;
+}
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+	   int n,m;
+	   cin>>n>>m;
+	   string x;
+	   cin>>x;
+	   string s;
+	   cin>>s;
+	   int i=0;
+	   int count=0;
+	   int ans=-1;
+	   string temp=x;
+	   while(i<=5){
+	       bool check=findSubstring(x,s);
+	       if(check){
+	           ans=count;
+	           break;
+	       }
+	       x+=temp;
+	       temp=x;
+	       count++;
+	       i++;
+	   }
+	   cout<<ans<<endl;
+	}
+	return 0;
+}
