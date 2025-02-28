@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int a,b;
+        cin>>a>>b;
+        int xk,yk;
+        cin>>xk>>yk;
+        int xq,yq;
+        cin>>xq>>yq;
+        int x_axis[]={-a,-a,a,a,-b,b,-b,b};
+        int y_axis[]={b,-b,b,-b,a,a,-a,-a};
+        set<pair<int,int>>st;
+        for(int i=0;i<8;i++){
+            st.insert({x_axis[i],y_axis[i]});
+        }
+        // finding all postion of knight
+        set<pair<int,int>>knight;
+        for(auto pos:st){
+            int x=pos.first+xk;
+            int y=pos.second+yk;
+            knight.insert({x,y});
+        }
+        int count=0;
+        for(auto queen:st){
+            int x=queen.first+xq;
+            int y=queen.second+yq;
+            if(knight.find({x,y})!=knight.end()){
+                count++;
+            }
+        }
+        cout<<count<<endl;
+    }
+}
