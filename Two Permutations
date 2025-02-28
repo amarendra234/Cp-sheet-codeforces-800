@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,a,b;
+        cin>>n>>a>>b;
+        int maxSide=max(a,b);
+        int minSide=min(a,b);
+        int old_n=n;
+        n-=maxSide;
+        if(n>=minSide){
+            n-=minSide;
+            if(n==0){
+                if(a==b and a==old_n){
+                    cout<<"YES"<<endl;
+                }else{
+                    cout<<"No"<<endl;
+                }
+            }else if(n==1){
+                cout<<"No"<<endl;
+            }else{
+                cout<<"YES"<<endl;
+            }
+        }else{
+             if(a==b and a==old_n){
+                cout<<"YES"<<endl;
+             }else{
+                cout<<"No"<<endl;
+             }
+        }
+    }
+}
