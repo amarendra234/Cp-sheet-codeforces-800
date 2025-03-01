@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+void solve(int a[],int n){
+    for(int i=1;i<n-1;i++){
+        int leftSideMin=INT_MAX;
+        int rightSideMin=INT_MAX;
+        int l=0;
+        int r=i+1;
+        int index1=0;
+        int index2=0;
+        while(l<i){
+            if(leftSideMin>a[l]){
+                leftSideMin=a[l];
+                index1=l;
+            }
+            l++;
+        }
+        while(r<n){
+            if(rightSideMin>a[r]){
+                rightSideMin=a[r];
+                index2=r;
+            }
+            r++;
+        }
+        if(a[i]>leftSideMin and a[i]>rightSideMin){
+            cout<<"YES"<<endl;
+            cout<<index1+1<<" "<<i+1<<" "<<index2+1<<endl;
+            return;
+        }
+
+    }
+    cout<<"NO"<<endl;
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        int a[n];
+        for(int i=0;i<n;i++){
+            cin>>a[i];
+        }
+        solve(a,n);
+    }
+}
