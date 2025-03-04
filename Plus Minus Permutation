@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        typedef long long ll;
+        ll n,x,y;
+        cin>>n>>x>>y;
+        ll dx=n/x;
+        ll dy=n/y;
+        ll lcm=(x*y)/__gcd(x,y);
+        dx=dx-(n/lcm);
+        dy=dy-(n/lcm);
+        // try to maximize dx if dx=4 then we put max value there
+        // rest number
+        ll restNumber=n-dx;
+        ll maxX=((n*(n+1))/2)-(restNumber*(restNumber+1))/2;
+        ll maxY=(dy*(dy+1))/2;
+        cout<<maxX-maxY<<endl;
+
+      
+
+
+    }
+}
