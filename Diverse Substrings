@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        typedef long long ll;
+        int n;
+        cin>>n;
+        string s;
+        cin>>s;
+        ll ans=0;
+        for(int i=0;i<n;i++){
+            int len=min(i+101,n);
+            unordered_map<char,int>umap;
+            int max_fre=0;
+            for(int j=i;j<len;j++){
+                 umap[s[j]]++;
+                 max_fre=max(max_fre,umap[s[j]]);
+                 if(umap.size()>=max_fre){
+                    ans++;
+                 }
+            }
+        }
+        cout<<ans<<endl;
+        
+    }
+}
